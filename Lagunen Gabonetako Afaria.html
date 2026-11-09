@@ -1,0 +1,438 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Earra Putak Gabonetako Afaia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a single centered invitation. Arched photo, script title, classic date lockup, framed menu card, RSVP reply card. */
+:root {
+  --bg: #f6f1e7;
+  --paper: #fbf8f1;
+  --fg: #1f3a2e;
+  --muted: #5b695f;
+  --gold: #8a6a22;
+  --line: #d8cbae;
+  --script: #2f5d46;
+  --btn-bg: #2f5d46;
+  --btn-fg: #fbf8f1;
+  --alarm-bg: #f9e3e1;
+  --alarm-fg: #7a1d22;
+  --alarm-line: #9c2a30;
+  --ok-bg: #e3eee4;
+  --ok-fg: #234d33;
+  --focus: #2f5d46;
+  --font-display: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  --font-script: "Pinyon Script", "Snell Roundhand", "Brush Script MT", cursive;
+  --font-body: "Jost", "Avenir Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10241c;
+    --paper: #163228;
+    --fg: #f1ead8;
+    --muted: #b4bfb3;
+    --gold: #d6b56a;
+    --line: #35503f;
+    --script: #e3c37d;
+    --btn-bg: #d6b56a;
+    --btn-fg: #14261e;
+    --alarm-bg: #3a1519;
+    --alarm-fg: #ffd6d8;
+    --alarm-line: #ff8d93;
+    --ok-bg: #153a2a;
+    --ok-fg: #c4eed3;
+    --focus: #e3c37d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10241c;
+  --paper: #163228;
+  --fg: #f1ead8;
+  --muted: #b4bfb3;
+  --gold: #d6b56a;
+  --line: #35503f;
+  --script: #e3c37d;
+  --btn-bg: #d6b56a;
+  --btn-fg: #14261e;
+  --alarm-bg: #3a1519;
+  --alarm-fg: #ffd6d8;
+  --alarm-line: #ff8d93;
+  --ok-bg: #153a2a;
+  --ok-fg: #c4eed3;
+  --focus: #e3c37d;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  text-align: center;
+  padding-block: 48px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 640px; margin-inline: auto; display: flex; flex-direction: column; align-items: center; gap: 48px; }
+.wrap > * { width: 100%; min-width: 0; }
+h1, h2, h3, p { margin: 0; }
+h2 { font-family: var(--font-display); font-weight: 500; font-style: italic; font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.15; text-wrap: balance; }
+.caps {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Ornament divider */
+.orn { display: flex; align-items: center; gap: 14px; color: var(--gold); max-width: 320px; margin-inline: auto; }
+.orn::before, .orn::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: 0.55; }
+.orn i { width: 7px; height: 7px; border: 1px solid currentColor; transform: rotate(45deg); flex: none; }
+
+/* Opening */
+.opening { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.photo { position: relative; width: min(100%, 360px); aspect-ratio: 4 / 5; margin-top: 10px; }
+.photo::before {
+  content: ""; position: absolute; inset: -10px;
+  border: 1px solid var(--gold); opacity: 0.6;
+  border-top-left-radius: 999px; border-top-right-radius: 999px;
+}
+.photo .frame {
+  position: relative; width: 100%; height: 100%; overflow: hidden;
+  border-top-left-radius: 999px; border-top-right-radius: 999px;
+  background: var(--paper); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo .ph { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 28px; color: var(--muted); }
+.photo .ph svg { width: 34px; height: 34px; color: var(--gold); }
+.photo .ph b { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; font-style: italic; color: var(--fg); }
+.photo .ph span { font-size: 14px; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+
+.script { font-family: var(--font-script); font-weight: 400; font-size: clamp(3.2rem, 14vw, 5.6rem); line-height: 1.05; color: var(--script); text-wrap: balance; padding-block: 4px; }
+.intro { max-width: 40ch; color: var(--muted); font-family: var(--font-display); font-size: 1.3rem; line-height: 1.4; font-style: italic; }
+
+/* Date lockup */
+.lockup { border-block: 1px solid var(--gold); padding-block: 22px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.lockup .l { text-align: right; }
+.lockup .r { text-align: left; }
+.lockup .num { font-family: var(--font-display); font-weight: 500; font-size: clamp(4rem, 15vw, 5.6rem); line-height: 0.9; color: var(--script); font-variant-numeric: lining-nums; padding-inline: 4px; }
+.lockup-sub { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.lockup-sub .big { font-family: var(--font-display); font-size: 1.35rem; font-style: italic; }
+.lockup-sub .count { margin-top: 6px; }
+
+/* Place */
+.place { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.place .name { font-family: var(--font-display); font-size: clamp(1.9rem, 6vw, 2.4rem); font-weight: 500; line-height: 1.15; overflow-wrap: anywhere; }
+.place .addr { color: var(--muted); overflow-wrap: anywhere; }
+.place a { margin-top: 6px; color: var(--fg); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 3px; }
+.place a:hover { color: var(--gold); }
+
+/* Menu card */
+.card-menu {
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: -9px;
+  padding: 52px 28px 48px;
+  display: flex; flex-direction: column; align-items: center; gap: 32px;
+}
+.course { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.course ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.dish strong { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; line-height: 1.25; }
+.dish em { display: block; color: var(--muted); font-family: var(--font-display); font-size: 1.12rem; line-height: 1.3; }
+.tag { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-left: 8px; white-space: nowrap; }
+
+/* RSVP */
+.rsvp { border: 1px solid var(--line); background: var(--paper); padding: 44px 24px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.rsvp p.lead { color: var(--muted); max-width: 40ch; margin-inline: auto; margin-top: 10px; }
+form { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
+.field { display: flex; flex-direction: column; align-items: center; gap: 12px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.field > label, .field > legend { padding: 0; font-family: var(--font-display); font-style: italic; font-size: 1.3rem; }
+select {
+  font: inherit; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--gold); border-radius: 2px;
+  padding: 13px 14px; width: 100%; text-align: center; text-align-last: center;
+}
+.choices { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.choice { position: relative; }
+.choice input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.choice span {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 120px;
+  padding: 12px 22px; border: 1px solid var(--line); border-radius: 2px;
+  background: var(--bg); font-size: 13px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; pointer-events: none;
+}
+.choice input:checked + span { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.choice input[value="yes"]:checked + span { border-color: var(--alarm-line); box-shadow: inset 0 0 0 1px var(--alarm-line); color: var(--alarm-fg); background: var(--alarm-bg); }
+select:focus-visible, .choice input:focus-visible + span, button:focus-visible, .place a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+button.primary {
+  font: inherit; font-size: 13px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  background: var(--btn-bg); color: var(--btn-fg); border: 0; border-radius: 2px;
+  padding: 16px 28px; cursor: pointer; align-self: center; min-width: 220px;
+}
+button.primary:hover { filter: brightness(1.1); }
+button.link { font: inherit; background: none; border: 0; padding: 0; color: inherit; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+
+.msg { display: flex; gap: 14px; align-items: flex-start; text-align: left; padding: 16px 18px; border-radius: 2px; width: 100%; }
+.msg svg { flex: none; width: 26px; height: 26px; margin-top: 2px; }
+.msg p { min-width: 0; }
+.msg strong { display: block; font-family: var(--font-display); font-size: 1.3rem; line-height: 1.25; font-weight: 600; }
+.alarm { background: var(--alarm-bg); color: var(--alarm-fg); border: 2px solid var(--alarm-line); }
+.alarm.shake { animation: shake 0.45s ease; }
+.ok { background: var(--ok-bg); color: var(--ok-fg); border: 1px solid var(--ok-fg); max-width: 420px; }
+.error { color: var(--alarm-fg); font-size: 15px; font-weight: 500; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+@media (prefers-reduced-motion: reduce) { .alarm.shake { animation: none; } }
+
+.foot { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--muted); display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+@media (max-width: 480px) {
+  body { font-size: 16px; padding-block: 36px 56px; }
+  .wrap { gap: 40px; }
+  .card-menu { padding: 44px 20px 40px; }
+  .rsvp { padding: 36px 18px; }
+  .lockup { gap: 10px; }
+  .caps { letter-spacing: 0.2em; font-size: 12px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="opening">
+    <span class="caps">Lagunekin batera</span>
+    <figure class="photo" style="margin-inline:0;margin-bottom:0">
+      <div class="frame">
+        <img id="photo" alt="Gabonetako afariaren argazkia" hidden>
+        <div class="ph" id="ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 16-5-5-8 8"/></svg>
+          <b>Hemen joango da zure argazkia</b>
+          <span>Bertikala, 4:5 · 1200 × 1500 px</span>
+        </div>
+      </div>
+    </figure>
+    <h1 class="script">Gabonetako Afaia</h1>
+    <p class="intro">Urteroko ohitura. Asko gustatuko litzaigu zu han egotea.</p>
+  </header>
+
+  <section aria-label="Data">
+    <div class="lockup">
+      <span class="caps l" id="dayName">Abenduak</span>
+      <span class="num" id="dayNum">23</span>
+      <span class="caps r" id="dayMonth">Asteazkena</span>
+    </div>
+    <div class="lockup-sub">
+      <span class="big" id="year">2026</span>
+      <span id="time">Poteua 19:00tatik aurrea, afaia sobrela.</span>
+      <span class="caps count" id="count"></span>
+    </div>
+  </section>
+
+  <div class="orn" aria-hidden="true"><i></i></div>
+
+  <section class="place" aria-label="Lekua">
+    <span class="caps">Lekua</span>
+    <span class="name" id="placeName">Indamendi Soziedadea</span>
+    <span class="addr" id="placeAddr">Larretxo 5, 20750 Zumaia</span>
+    <a id="mapLink" href="#" target="_blank" rel="noopener">Ireki maps-en</a>
+  </section>
+
+  <section class="card-menu" aria-labelledby="menuTitle">
+    <span class="caps">Mahaia</span>
+    <h2 id="menuTitle">Menua</h2>
+    <div class="orn" aria-hidden="true"><i></i></div>
+    <div id="menu" style="display:flex;flex-direction:column;gap:32px;align-items:center;width:100%"></div>
+  </section>
+
+  <section class="rsvp" aria-labelledby="rsvpTitle">
+    <div>
+      <span class="caps">Baieztapena</span>
+      <h2 id="rsvpTitle" style="margin-top:10px">Mesedez, erantzun</h2>
+      <p class="lead">Aukeratu zure izena zerrendatik eta esaiguzu bikotekidea ekarriko duzun.</p>
+    </div>
+
+    <form id="rsvpForm" novalidate>
+      <div class="field">
+        <label for="who">Nor zara zu?</label>
+        <select id="who" name="who" required>
+          <option value="">Aukeratu zure izena</option>
+        </select>
+      </div>
+
+      <fieldset class="field">
+        <legend>Bikotekidea ekarriko duzu?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="partner" id="partnerYes" value="yes"><span>Bai</span></label>
+          <label class="choice"><input type="radio" name="partner" id="partnerNo" value="no"><span>Ez</span></label>
+        </div>
+      </fieldset>
+
+      <div id="alarm" class="msg alarm" role="alert" tabindex="-1" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <p><strong>Bikotekideak ezin dira afarira etorri.</strong>Lagunentzako mahaia da soilik, beraz aukeratu "Ez" zure lekua baieztatzeko.</p>
+      </div>
+
+      <p id="formError" class="error" role="alert" hidden></p>
+
+      <button type="submit" class="primary" id="send">Baieztatu nire lekua</button>
+    </form>
+
+    <div id="done" class="msg ok" role="status" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.8 2.8L16 9.5"/></svg>
+      <div>
+        <p><strong id="doneTitle"></strong><span id="doneText"></span></p>
+        <p style="margin-top:10px"><button type="button" class="link" id="again">Beste norbait ari da erantzuten</button></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="orn" aria-hidden="true" style="width:100%"><i></i></div>
+    <span>Maitasunez, eta zuretzat gordeta dagoen leku batekin</span>
+  </footer>
+</div>
+
+<script>
+/* EDIT HERE: change these details and the page updates itself. */
+var DINNER = {
+  photo: "earra_perrak.png",                                       // image address, set when the photo is added
+  date: new Date(2026, 11, 19, 21, 0),            // year, month (0 = January), day, hour, minute
+  timeText: "Ateak 20:30ean irekiko dira, afaria 21:00etan zerbitzatuko da",
+  placeName: "Indamendi Soziedadea",
+  address: "Larretxo 5, Zumaia 20750",
+  friends: ["Malen", "Enara Manterola", "Enara Arano", "June Aranguren", "June Santamaria", "Amaiur", "Eider", "Eire Maia", "Eire Salegi", "Leire", "Garazi", "Nagore", "Ruth", "Ane(to)", "Libe Amas", "Aloña", "Arhane", "Bidatz"],
+  menu: [
+    { course: "Lehen platera", dishes: [
+      { name: "Kroketak", note: "Begetak eta ez" },
+      { name: "Fueta", note: "Earra" } ] },
+    { course: "Bigarren platera", dishes: [
+      { name: "Indioilar errea cranberry glaseatuarekin", note: "Patata gratinatua eta azenario glaseatuak" },
+      { name: "Perretxiko eta gaztainazko wellingtona", note: "Ardo beltzezko saltsa", tag: "Begetarianoa" } ] },
+    { course: "Postrea", dishes: [
+      { name: "Mildred supongo", note: "Normala ta txokolatiana" },
+      { name: "Malenen gazta tarta", note: "Bai no Malen?" } ] },
+    { course: "Edariak", dishes: [
+      { name: "Ardoa eta sagardoa", note: "Eta ura, naturala." },
+      { name: "Kopak", note: "Afalondoren" } ] }
+  ]
+};
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var d = DINNER.date;
+  document.documentElement.lang = "eu";
+
+  var DAYS = ["igandea", "astelehena", "asteartea", "asteazkena", "osteguna", "ostirala", "larunbata"];
+  var MONTHS = ["urtarrila", "otsaila", "martxoa", "apirila", "maiatza", "ekaina", "uztaila", "abuztua", "iraila", "urria", "azaroa", "abendua"];
+  var MONTHS_OF = ["urtarrilaren", "otsailaren", "martxoaren", "apirilaren", "maiatzaren", "ekainaren", "uztailaren", "abuztuaren", "irailaren", "urriaren", "azaroaren", "abenduaren"];
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  // Photo
+  if (DINNER.photo) {
+    $("photo").src = DINNER.photo;
+    $("photo").hidden = false;
+    $("ph").hidden = true;
+  }
+
+  // Date, place, countdown
+  $("dayName").textContent = cap(DAYS[d.getDay()]);
+  $("dayNum").textContent = d.getDate();
+  $("dayMonth").textContent = cap(MONTHS[d.getMonth()]);
+  $("year").textContent = d.getFullYear();
+  $("time").textContent = DINNER.timeText;
+  $("placeName").textContent = DINNER.placeName;
+  $("placeAddr").textContent = DINNER.address;
+  $("mapLink").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(DINNER.placeName + ", " + DINNER.address);
+  var days = Math.ceil((d - new Date()) / 86400000);
+  $("count").textContent = days > 1 ? days + " egun falta dira" : days === 1 ? "Bihar" : days === 0 ? "Gaur gauean" : "";
+
+  // Menu
+  var menu = $("menu");
+  DINNER.menu.forEach(function (c, i) {
+    if (i > 0) {
+      var o = document.createElement("div");
+      o.className = "orn"; o.setAttribute("aria-hidden", "true");
+      o.style.width = "120px";
+      o.appendChild(document.createElement("i"));
+      menu.appendChild(o);
+    }
+    var row = document.createElement("div");
+    row.className = "course";
+    var lab = document.createElement("span");
+    lab.className = "caps";
+    lab.textContent = c.course;
+    var ul = document.createElement("ul");
+    c.dishes.forEach(function (dish) {
+      var li = document.createElement("li");
+      li.className = "dish";
+      var s = document.createElement("strong");
+      s.textContent = dish.name;
+      if (dish.tag) { var t = document.createElement("span"); t.className = "tag"; t.textContent = dish.tag; s.appendChild(t); }
+      var n = document.createElement("em");
+      n.textContent = dish.note;
+      li.appendChild(s); li.appendChild(n);
+      ul.appendChild(li);
+    });
+    row.appendChild(lab); row.appendChild(ul);
+    menu.appendChild(row);
+  });
+
+  // Friends list
+  var who = $("who");
+  DINNER.friends.forEach(function (name) {
+    var o = document.createElement("option");
+    o.value = name; o.textContent = name;
+    who.appendChild(o);
+  });
+
+  // Partner alarm
+  var alarm = $("alarm"), err = $("formError");
+  function showAlarm(focus) {
+    alarm.hidden = false;
+    alarm.classList.remove("shake");
+    void alarm.offsetWidth;
+    alarm.classList.add("shake");
+    if (focus) { alarm.focus({ preventScroll: true }); alarm.scrollIntoView({ block: "center", behavior: "smooth" }); }
+  }
+  function clearError() { err.hidden = true; err.textContent = ""; }
+
+  $("partnerYes").addEventListener("change", function () { clearError(); showAlarm(false); });
+  $("partnerNo").addEventListener("change", function () { clearError(); alarm.hidden = true; });
+  who.addEventListener("change", clearError);
+
+  $("rsvpForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = who.value;
+    var choice = document.querySelector('input[name="partner"]:checked');
+    if (!name) { err.textContent = "Aukeratu lehenengo zure izena zerrendatik."; err.hidden = false; who.focus(); return; }
+    if (!choice) { err.textContent = "Esaiguzu bikotekidea ekarriko duzun."; err.hidden = false; return; }
+    clearError();
+    if (choice.value === "yes") { showAlarm(true); return; }
+    $("doneTitle").textContent = "Barruan zaude, " + name + ".";
+    $("doneText").textContent = " Elkar ikusiko dugu! Data: " + DAYS[d.getDay()] + ", " + MONTHS_OF[d.getMonth()] + " " + d.getDate() + "a. Lekua: " + DINNER.placeName + ".";
+    $("rsvpForm").hidden = true;
+    $("done").hidden = false;
+  });
+
+  $("again").addEventListener("click", function () {
+    $("rsvpForm").reset();
+    alarm.hidden = true;
+    clearError();
+    $("done").hidden = true;
+    $("rsvpForm").hidden = false;
+    who.focus();
+  });
+})();
+</script>
+
+</body></html>
